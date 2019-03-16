@@ -15,6 +15,7 @@ class Resumes(models.Model):
     resume_name = models.CharField(max_length=25)
     resume_file = models.FileField()
     username = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
 
