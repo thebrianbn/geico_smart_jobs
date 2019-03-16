@@ -4,6 +4,12 @@ from django.views.generic import View
 from smart_jobs.models import Resumes
 from smart_jobs.forms import ResumeForm
 
+from django.contrib.auth.forms import UserCreationForm
+
+class Register(View):
+    def get(self, request):
+        form = UserCreationForm()
+        return render(request, 'register.html', {'form': form})
 
 class ResumeUpload(View):
 
