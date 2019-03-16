@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class AppUser(User):
 
     position_preference = models.CharField(max_length=50, null=True)
+    location_preference = models.CharField(max_length=50, null=True)
     education = models.CharField(max_length=50, null=True)
     image = models.ImageField(null=True)
 
