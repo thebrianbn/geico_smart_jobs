@@ -2,6 +2,20 @@
     border: none;
 }
 
+.logo-banner {
+    background-color: white;
+}
+
+.logo-container {
+    padding: 20px;
+    text-align: center;
+}
+
+#geico-logo {
+    width:15%;
+    height:15%;
+}
+
 .navbar-header {
     background-image: linear-gradient(#1f65f1, #2a53db);
     width: 100%;
@@ -24,7 +38,7 @@
     min-width: 73px;
     position: relative;
     display: block;
-    padding: 15px 15px;
+    padding: 18px 15px;
     color: white;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
@@ -38,7 +52,8 @@
 }
 
 /* Dropdown content (hidden by default) */
-.careers-dropdwn-content {
+.careers-dropdwn-content, .profile-dropdwn-content {
+    height: 0px;
     display: none;
     position: absolute;
     min-width: 160px;
@@ -54,15 +69,52 @@
 }
 
 .careers-dropdwn-button:hover > .careers-dropdwn-content {
+    height: auto;
     display: block;
     text-decoration: none;
     background-color: black;
-    -webkit-transition-timing-function: ease;
+}
+
+.vert-line {
+    border-left: 2px solid;
+    border-color: black;
+}
+
+.avatar-container {
+    padding: 8px;
+    position: ;
+    display: block;
+    height: 100%;
+    width: inherit;
+    margin: auto;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50px;
+    transition-duration: .2s;
+}
+
+.avatar:hover {
+    -webkit-filter: brightness(70%);
+    transition-duration: .5s;
+}
+
+.profile-dropdwn-content {
+    margin-right: 40px;
+}
+
+.profile-dropdwn-button:hover > .profile-dropdwn-content {
+    height: auto;
+    display: block;
+    text-decoration: none;
+    background-color: black;
+    text-align: right;
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
     background-color: #F9F9F9;
 }
 

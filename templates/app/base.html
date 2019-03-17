@@ -17,6 +17,9 @@
         <div class="navbar">
             <div class="logo-banner">
                 <!--INSERT LOGO FOR BANNER-->
+                <div class="logo-container">
+                    <img src="{% static 'app/images/geico.png' %}" id="geico-logo" />
+                </div>
             </div>
                 <div class="navbar-header">
                     <div class="navbar-page-links">
@@ -35,10 +38,36 @@
                     </div>
                     <div class="navbar-user-links">
                         <ul class="navbar-nav navbar-links">
+                            <li><a href="{% url 'home' %}">DASHBOARD</a></li>
+                            <li class="profile-dropdwn-button">
+                                <div class="avatar-container">
+                                    <a href="{% url 'home' %}">
+                                        <img src="{% static 'app/images/avatar.png' %}" class="avatar"/>
+                                        <span class="caret"></span>
+                                    </a>
+                                </div>
+                                <ul class="profile-dropdwn-content navbar-links navbar-right" style="right:0;">
+                                    <li>
+                                        <a href="{% url 'home' %}">Profile</a>
+                                        <a href="{% url 'home' %}">My Applications</a>
+                                        <a href="{% url 'home' %}">Log out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <!--
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'home' %}">DASHBOARD</a></li>
+                            <li><a href="{% url 'home' %}">PROFILE</a></li>
+                        {% else %}
                             <li><a href="{% url 'home' %}">LOG IN</a></li>
+                        {% endif %}
                         </ul>
+                        -->
                     </div>
                 </div>
         </div>
+
+        {% block content %}{% endblock %}
+
     </body>
 </html>
