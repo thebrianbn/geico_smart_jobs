@@ -5,13 +5,13 @@ from django.contrib.auth.models import User
 User.add_to_class("position_preference", models.CharField(max_length=50, null=True))
 User.add_to_class("location_preference", models.CharField(max_length=50, null=True))
 User.add_to_class("education", models.CharField(max_length=50, null=True))
-User.add_to_class("image", models.ImageField(null=True))
+User.add_to_class("image", models.ImageField(null=True, upload_to="documents/images/"))
 
 
 class Resumes(models.Model):
 
     resume_name = models.CharField(max_length=25)
-    resume_file = models.FileField(upload_to="documents/")
+    resume_file = models.FileField(upload_to="documents/resumes/")
     username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
