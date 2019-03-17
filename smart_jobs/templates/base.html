@@ -45,8 +45,12 @@
                                 <li><a href="{% url 'dashboard' %}">DASHBOARD</a></li>
                                 <li class="profile-dropdwn-button">
                                 <div class="avatar-container">
-                                    <a href="{% url 'home' %}">
-                                        <img src="{% static 'app/images/avatar.png' %}" class="avatar"/>
+                                    <a href="{% url 'profile' %}">
+                                        {% if user.image %}
+                                            <img class="avatar" src="{{ user.image.url }} " height="40" width="40">
+                                        {% else %}
+                                            <img src="{% static 'app/images/avatar.png' %}" class="avatar"/>
+                                        {% endif %}
                                         <span class="caret"></span>
                                     </a>
                                 </div>
