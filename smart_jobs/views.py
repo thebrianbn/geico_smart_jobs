@@ -9,12 +9,9 @@ from smart_jobs.forms import ResumeForm, BlankForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django import forms
-<<<<<<< HEAD
 from django.utils.decorators import method_decorator
-=======
 from geico_smart_jobs.utils import get_matches
 
->>>>>>> origin/master
 
 class Home(View):
 
@@ -38,12 +35,7 @@ class Register(View):
         if form.is_valid:
             form.save()
             username = form.cleaned_data.get('username')
-<<<<<<< HEAD
         return redirect('login')
-=======
-            messages.success(request, "Registration successful.")
-        return redirect('home')
->>>>>>> origin/master
 
 
 class Profile(View):
@@ -77,10 +69,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         fields = ("username", "first_name", "last_name", "email", )
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> origin/master
+        
 class ResumeUpload(View):
 
     def get(self, request):
