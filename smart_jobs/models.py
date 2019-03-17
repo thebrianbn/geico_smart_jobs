@@ -12,7 +12,7 @@ User.add_to_class("image", models.ImageField(null=True))
 class Resumes(models.Model):
 
     resume_name = models.CharField(max_length=25)
-    resume_file = models.FileField(upload_to="documents/")
+    resume_file = models.FileField(upload_to="documents/resumes/")
     username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
@@ -27,6 +27,7 @@ class JobApplications(models.Model):
     job_description = models.TextField()
     job_description_words = models.TextField()
     min_education = models.CharField(max_length=50, null=True)
+    word_cloud = models.ImageField(upload_to="documents/wordcloud/")
 
     def __str__(self):
         return self.job_title

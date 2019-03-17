@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView, DetailView
+from django.contrib import messages
 from django.core.mail import send_mail
 
 from smart_jobs.models import Resumes, JobApplications, User, Recommendations, UserApplications
@@ -14,11 +15,11 @@ class Home(View):
 
     def get(self, request):
 
-        return render(request, "home.html")
+        return render(request, "home.html", {"title": "Home"})
 
     def post(self, request):
 
-        return render(request, "home.html")
+        return render(request, "home.html", {"title": "Home"})
 
 
 class Register(View):
@@ -32,7 +33,9 @@ class Register(View):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            messages.success(request, "Registration successful.")
         return redirect('home')
+
 
 class Profile(View):
 
@@ -87,6 +90,7 @@ class ResumeUpload(View):
 class JobBrowser(ListView):
 
     model = JobApplications
+
     def get(self, request):
         job_apps = JobApplications.objects.all()
 
@@ -101,13 +105,22 @@ class JobApplicationDetail(DetailView):
     model = JobApplications
     template_name = "job_detail.html"
 
-
     def post(self, request, pk):
 
+        if not request.user.is_authenticated:
+            messages.error(request, "You need to be logged in to apply to any position.")
+            return redirect("home")
+
         job = JobApplications.objects.get(id=pk)
-        resume = Resumes.objects.filter(username=request.user).latest("id")
-        new_application = UserApplications(username=request.user, job=job, status="Applied", resume_name=resume)
-        new_application.save()
+        application_exists = UserApplications.objects.filter(username=request.user, job=job).count() == 1
+
+        if not application_exists:
+            resume = Resumes.objects.filter(username=request.user).latest("id")
+            new_application = UserApplications(username=request.user, job=job, status="Applied", resume_name=resume)
+            new_application.save()
+            messages.success(request, "Applied to job successfully.")
+        else:
+            messages.error(request, "You have already applied to this job.")
 
         return redirect("home")
 

@@ -5,11 +5,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ title }} - My Django Application</title>
+        <title>{{ title }} - Geckonnect</title>
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
         <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="{% static 'app/images/geico_fav.jpg' %}"/>
     </head>
 
     <body>
@@ -46,6 +47,15 @@
                     </div>
                 </div>
         </div>
+        {% if messages %}
+        <div class="container w-100" style="padding-left: 0px; padding-right: 0px">
+            <div id="messages" class="text-center">
+                {% for message in messages %}
+                    <div class="alert-{{ message.tags }}">{{ message|safe }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
         <div class="col-md-8">{% block content %} {%  endblock content %}</div>
 
     </body>
