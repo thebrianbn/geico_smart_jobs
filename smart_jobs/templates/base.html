@@ -8,6 +8,9 @@
         <title>{{ title }} - My Django Application</title>
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/navbar.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/job-application.css' %}" />
+
         <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
@@ -17,6 +20,7 @@
             <div class="logo-banner">
                 <!--INSERT LOGO FOR BANNER-->
                 <img src="{%  static 'app/images/geckonnect.png' %}", width="225", height="50">
+
             </div>
                 <div class="navbar-header">
                     <div class="navbar-page-links">
@@ -34,6 +38,7 @@
                     </div>
                     <div class="navbar-user-links">
                         <ul class="navbar-nav navbar-links">
+
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'resume-upload' %}">RESUME UPLOAD</a></li>
                                 <li><a href="{% url 'profile' %}">PROFILE</a></li>
@@ -42,10 +47,29 @@
                                 <li><a href="{% url 'login' %}">LOG IN</a></li>
                                 <li><a href="{% url 'register' %}">REGISTER</a></li>
                             {% endif %}
+                            <li><a href="{% url 'user_dashboard' %}">DASHBOARD</a></li>
+                            <li class="profile-dropdwn-button">
+                                <div class="avatar-container">
+                                    <a href="{% url 'home' %}">
+                                        <img src="{% static 'app/images/avatar.png' %}" class="avatar"/>
+                                        <span class="caret"></span>
+                                    </a>
+                                </div>
+                                <ul class="profile-dropdwn-content navbar-links navbar-right" style="right:0;">
+                                    <li>
+                                        <a href="{% url 'home' %}">Profile</a>
+                                        <a href="{% url 'home' %}">My Applications</a>
+                                        <a href="{% url 'home' %}">Log out</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                         </ul>
+                        -->
                     </div>
                 </div>
         </div>
+
         <div class="col-md-8">{% block content %} {%  endblock content %}</div>
 
     </body>

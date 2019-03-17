@@ -1,0 +1,64 @@
+﻿{% extends 'app/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="myapplication-list">
+        <h3 class="myapplication-header"><strong>My Applications</strong></h3>
+        <div class="application-item">
+            <button>
+                <h4 class="application-title">Software Engineer</h4>
+                <h5 class="application-location">Illadelph Fire, PA</h5>
+                <p class="application-date">Applied: 3/17/19</p>
+            </button>
+        </div>
+        <div class="application-item">
+            <button>
+                <h4 class="application-title">Data Science</h4>
+                <h5 class="application-location">Supa hot fire, NY</h5>
+                <p class="application-date">Applied: 3/17/19</p>
+            </button>
+        </div>
+        <div class="application-item">
+            <button>
+                <h4 class="application-title">Sr. Web Developer</h4>
+                <h5 class="application-location">Ooh yeah, CA</h5>
+                <p class="application-date">Applied: 3/17/19</p>
+            </button>
+        </div>
+    </div>
+            
+    <div class="application-info">
+        <div class="application-info-header">
+            <h2 class="application-header"><strong>Software Engineer</strong></h2>
+            <h4 class="application-header-location">Illadelph Fire, PA</h4>
+            <h4 class="application-header-date"><strong>Application submitted: 3/17/19</strong></h4>
+
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="progress-button-container">
+                <div class="progress-button">
+                    <button id="button1"><img src="{% static 'app/images/progress_button.png' %}" /></button>
+                    <p>Application submitted</p>
+                </div>
+                <div class="progress-button">
+                    <button id="button2"><img src="{% static 'app/images/progress_button.png' %}" /></button>
+                    <p>Resume review</p>
+                </div>
+                <div class="progress-button">
+                    <button id="button3"><img src="{% static 'app/images/progress_button.png' %}" /></button>
+                    <p>Pre-screen</p>
+                </div>
+                <div class="progress-button">
+                    <button id="button4"><img src="{% static 'app/images/progress_button.png' %}" /></button>
+                    <p>Interview</p>
+                </div>
+                <div class="progress-button" id="last-button">
+                    <button id="button5"><img src="{% static 'app/images/progress_button.png' %}" /></button>
+                    <p>Offer received</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
