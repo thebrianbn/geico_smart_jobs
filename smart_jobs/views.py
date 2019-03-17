@@ -8,6 +8,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
 
+class Home(View):
+
+    def get(self, request):
+
+        return render(request, "home.html")
+
+    def post(self, request):
+
+        return render(request, "home.html")
+
+
 class Register(View):
 
     def get(self, request):
@@ -64,5 +75,4 @@ class JobBrowser(ListView):
         return render(request, "browser.html", {"job_apps": job_apps})
 
     def post(self, request):
-
-        pass
+        return render(request, "browser.html")

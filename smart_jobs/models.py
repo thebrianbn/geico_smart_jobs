@@ -26,6 +26,7 @@ class JobApplications(models.Model):
 
     job_title = models.CharField(max_length=25, primary_key=True)
     job_description = models.TextField()
+    job_description_words = models.TextField()
     min_education = models.CharField(max_length=50, null=True)
 
 

@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from smart_jobs import views as user_views
+from geico_smart_jobs import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.Register.as_view(), name='register'),
-    path('', include("smart_jobs.urls"))
+    path('', include("smart_jobs.urls")),
 ]
