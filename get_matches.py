@@ -29,11 +29,17 @@ def get_matches(path):
 
             if word in new_tokens:
                 match_count+=1
+
+        title = job.job_title
+        for word in title.split(" "):
+            if word in new_tokens:
+                match_count+=3
         match_dict[job.job_title] = match_count
+
     five = nlargest(5, match_dict, key=match_dict.get)
     return five
 if __name__ == "__main__":
-    get_matches('software-engineer-midlevel')
+    print(get_matches('software-engineer-midlevel.docx'))
 
 
 
