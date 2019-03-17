@@ -3,7 +3,6 @@ from smart_jobs.models import JobApplications
 from parse_docx import parse_docx
 
 
-
 def get_matches(path):
 
     doc = path
