@@ -1,6 +1,5 @@
 from django import forms
 from smart_jobs.models import Resumes
-from .models import User
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
