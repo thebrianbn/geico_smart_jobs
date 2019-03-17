@@ -1,0 +1,116 @@
+﻿.myapplication-list {
+    padding: 10px;
+    width: 28%;
+    float: left;
+    margin-right: 10px;
+}
+
+.application-info {
+    background-color: green;
+    width: 65%;
+    float: left;
+    padding: 10px;
+}
+
+.application-item { 
+    border-top: 1px solid grey;
+}
+
+.myapplication-header {
+    margin-bottom: 40px;
+}
+
+.application-title {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.application-location {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.application-item > button {
+    align-items: flex-start;
+    text-align: left;
+    cursor: pointer;
+    background-color: inherit;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 5px 7px;
+}
+
+.application-item > button:active {
+    -webkit-filter: brightness(.7);
+    transition-duration: .2s;
+}
+
+.application-item {
+    transition-duration: .2s;
+}
+
+.application-header {
+    margin-bottom: 25px;
+}
+
+.application-item:hover {
+    background-color: #f9f9f9;
+    -webkit-filter: brightness(.8);
+    transition-duration: .4s;
+}
+
+.progress {
+    width: 100%;
+    margin-top: 80px;
+}
+
+.application-info-header > h4 {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.progress-button-container {
+    z-index: 1;
+}
+
+.progress-button {
+    width: 100px;
+    text-align: center;
+    margin-top: -45px;
+    padding:0px;
+    width: inherit;
+    height: inherit;
+    float: left;
+    padding-right: 7%;
+}
+
+.progress-button > p {
+    width: 10%;
+    text-align: center;
+}
+.progress-button > button{
+    align-items: flex-start;
+    text-align: center;
+    cursor: pointer;
+    background-color: inherit;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0px;
+    border-radius: 50px;
+    width:inherit;
+    height:inherit;
+    padding-bottom: 5px;
+}
+
+.progress-button > button > img {
+    width: 30px;
+    height: 30px;
+}
+
+#last-button {
+    padding-right: 0px;
+}
