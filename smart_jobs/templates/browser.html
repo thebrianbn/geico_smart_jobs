@@ -19,6 +19,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                 <div class="w3-container w3-white">
                     <h5><a class="article-title" href="{% url 'job-detail' job.pk %}"> {{  job.job_title }} </a></h5>
                     <p>  <b>Job Keywords:</b> {{  job.job_description|slice:":100" }} </p>
+                    <p> <b>Location:</b> {{ job.location }} </p>
                     <p> <b>Minimum Education Requirement:</b> {{ job.min_education }} </p>
                 </div>
             </div>

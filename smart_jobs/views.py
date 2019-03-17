@@ -139,3 +139,14 @@ class RecommendationsView(View):
     def post(self, request):
         return render(request, "browser.html")
 
+
+class Dashboard(View):
+
+    def get(self, request):
+        context = {}
+        apps = UserApplications.objects.filter(username=request.user)
+        context["apps"] = apps
+        return render(request, "user_dashboard.html", context=context)
+
+    def post(self, request):
+        pass

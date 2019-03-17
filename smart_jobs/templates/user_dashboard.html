@@ -1,30 +1,20 @@
-﻿{% extends 'app/base.html' %}
-{% load staticfiles %}
+﻿{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <div class="myapplication-list">
         <h3 class="myapplication-header"><strong>My Applications</strong></h3>
-        <div class="application-item">
-            <button>
-                <h4 class="application-title">Software Engineer</h4>
-                <h5 class="application-location">Illadelph Fire, PA</h5>
-                <p class="application-date">Applied: 3/17/19</p>
-            </button>
-        </div>
-        <div class="application-item">
-            <button>
-                <h4 class="application-title">Data Science</h4>
-                <h5 class="application-location">Supa hot fire, NY</h5>
-                <p class="application-date">Applied: 3/17/19</p>
-            </button>
-        </div>
-        <div class="application-item">
-            <button>
-                <h4 class="application-title">Sr. Web Developer</h4>
-                <h5 class="application-location">Ooh yeah, CA</h5>
-                <p class="application-date">Applied: 3/17/19</p>
-            </button>
-        </div>
+
+        {% for app in apps %}
+                <div class="application-item">
+                    <button>
+                        <h4 class="application-title"> {{ app.job.job_title }}</h4>
+                        <h5 class="application-location">{{ app.job.location }}</h5>
+                        <p class="application-date">{{ app.uploaded_at }}</p>
+                        <p class="application-date">{{ app.status }}</p>
+                    </button>
+                </div>
+        {% endfor %}
     </div>
             
     <div class="application-info">
