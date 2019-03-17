@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView
 
-from smart_jobs.models import Resumes, JobApplications, User
+from smart_jobs.models import Resumes, JobApplications, User, Recommendations
 from smart_jobs.forms import ResumeForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from geico_smart_jobs.utils import get_matches
 
 class Home(View):
 
@@ -64,6 +65,16 @@ class ResumeUpload(View):
             new_resume = Resumes.objects.latest("id")
             new_resume.username = request.user
             new_resume.save()
+
+            matches = get_matches(new_resume.resume_file)
+            for match in matches:
+
+                job_app = JobApplications.objects.get(job_title=match)
+                match_exists = Recommendations.objects.filter(username=request.user, job_title=job_app).count() == 1
+                if not match_exists:
+                    new_match = Recommendations(job_title=job_app, username=request.user)
+                    new_match.save()
+
             return redirect('home')
         else:
             render(request, "hello")
@@ -83,4 +94,21 @@ class JobBrowser(ListView):
 
 
 class JobApplication(View):
-    
+
+    pass
+
+
+class RecommendationsView(View):
+
+    def get(self, request):
+
+        job_apps = []
+        reccs = Recommendations.objects.filter(username=request.user)
+        for rec in reccs:
+            job_apps.append(JobApplications.objects.get(job_title=rec.job_title))
+
+        return render(request, "browser.html", {"job_apps": job_apps})
+
+    def post(self, request):
+        return render(request, "browser.html")
+
