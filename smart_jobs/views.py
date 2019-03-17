@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView
 
-from smart_jobs.models import Resumes, JobApplications
+from smart_jobs.models import Resumes, JobApplications, AppUser
 from smart_jobs.forms import ResumeForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from smart_jobs.models import AppUser
 
 
 class Register(View):
