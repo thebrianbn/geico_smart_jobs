@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{%  block content %}
 <html>
     <head>
         <title> GEICO Jobs </title>
@@ -15,12 +16,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <body>
         {% for job in job_apps %}
             <div class="w3-third w3-container w3-margin-bottom">
-            <div class="w3-container w3-white">
-            <h5> {{  job.job_title }} </h5>
-            <p>  Job Keywords: {{  job.job_description }} </p>
-            <p> Minimum Education Requirement: {{ job.min_education }} </p>
-            </div>
+                <div class="w3-container w3-white">
+                    <h5> {{  job.job_title }} </h5>
+                    <p>  Job Keywords: {{  job.job_description }} </p>
+                    <p> Minimum Education Requirement: {{ job.min_education }} </p>
+                </div>
             </div>
         {% endfor %}
     </body>
 </html>
+
+{% endblock content %}

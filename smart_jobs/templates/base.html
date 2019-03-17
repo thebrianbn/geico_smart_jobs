@@ -25,8 +25,8 @@
                             <li class="careers-dropdwn-button"><a href="{% url 'register' %}">CAREERS</a>
                                 <ul class="careers-dropdwn-content navbar-links">
                                     <li>
-                                        <a href="{% url 'register' %}">Find Jobs</a>
-                                        <a href="{% url 'register' %}">Recommend Me a Job</a>
+                                        <a href="{% url 'job-browser' %}">Find Jobs</a>
+                                        <a href="{% url 'register' %}">Job Recommendations</a>
                                     </li>
                                 </ul>
                             </li>
@@ -40,5 +40,7 @@
                     </div>
                 </div>
         </div>
+        <div class="col-md-8">{% block content %} {%  endblock content %}</div>
+
     </body>
 </html>
