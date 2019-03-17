@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
+from django.views.generic import View, ListView
 
-from smart_jobs.models import Resumes
+from smart_jobs.models import Resumes, JobApplications
 from smart_jobs.forms import ResumeForm
 
 from django.contrib.auth.forms import UserCreationForm
@@ -50,3 +50,18 @@ class ResumeUpload(View):
             return redirect('home')
 
         return render(request, "#", )
+<<<<<<< HEAD
+=======
+
+
+class JobBrowser(ListView):
+
+    def get(self, request):
+        job_apps = JobApplications.objects.all()
+
+        return render(request, "browser.html", {"job_apps": job_apps})
+
+    def post(self, request):
+
+        pass
+>>>>>>> origin
