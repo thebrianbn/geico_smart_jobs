@@ -21,7 +21,8 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email']
+        fields = ['first_name', 'last_name', 'username', 'email', 'education', 'position_preference',
+                  'location_preference']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:

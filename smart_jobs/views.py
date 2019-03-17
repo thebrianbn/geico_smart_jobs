@@ -12,6 +12,8 @@ from django import forms
 from django.utils.decorators import method_decorator
 from geico_smart_jobs.utils import get_matches
 
+import ast
+
 
 class Home(View):
 
@@ -62,12 +64,16 @@ class Profile(View):
 
 class RegisterForm(UserCreationForm):
 
-    email = forms.EmailField(label = "Email")
-    first_name = forms.CharField(label = "First name")
-    last_name = forms.CharField(label = "Last name")
+    email = forms.EmailField(label="Email")
+    first_name = forms.CharField(label="First name")
+    last_name = forms.CharField(label="Last name")
+    education = forms.CharField(label="Education level")
+    position_preference = forms.CharField(label="Position preference")
+    location_preference = forms.CharField(label="Position preference")
 
     class Meta:
-        fields = ("username", "first_name", "last_name", "email", )
+        fields = (
+        "username", "first_name", "last_name", "email", "education", "position_preference", "location_preference")
 
         
 class ResumeUpload(View):
@@ -110,8 +116,12 @@ class JobBrowser(ListView):
 
     def get(self, request):
         job_apps = JobApplications.objects.all()
+        new_apps = []
+        for app in job_apps:
+            app.job_description = ast.literal_eval(app.job_description)[:10]
+            new_apps.append(app)
 
-        return render(request, "browser.html", {"job_apps": job_apps, "title": "GEICO Jobs"})
+        return render(request, "browser.html", {"job_apps": new_apps, "title": "GEICO Jobs"})
 
     def post(self, request):
         return render(request, "browser.html")

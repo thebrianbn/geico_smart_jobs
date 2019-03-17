@@ -56,7 +56,7 @@
                         <h4 class="application-title"> {{ app.job.job_title }}</h4>
                         <h5 class="application-location">{{ app.job.location }}</h5>
                         <p class="application-date">{{ app.uploaded_at }}</p>
-                        <p class="application-date">{{ app.status }}</p>
+                        <p class="application-date">Status: {{ app.status }}</p>
                     </button>
                 </div>
         {% endfor %}
@@ -64,8 +64,8 @@
             
     <div class="application-info">
         <div class="application-info-header">
-            <h2 class="application-header"><strong>Software Engineer</strong></h2>
-            <h4 class="application-header-location">Illadelph Fire, PA</h4>
+            <h2 class="application-header"><strong>Senior .NET Developer</strong></h2>
+            <h4 class="application-header-location">Chevy Chase, Maryland, United States</h4>
             <h4 class="application-header-date"><strong>Application submitted: 3/17/19</strong></h4>
 
             <!--
@@ -92,6 +92,7 @@
             <div class="application-status-info">
                 <h3 class="application-header" id="application-status-title" style="font-weight: 600;"></h3>
                 <p id="application-status-desc">We've received your application and we are currently working on the next steps.</p>
+                <p id="application-status-desc">Time Estimate: 1-2 weeks</p>
             </div>
 
 
