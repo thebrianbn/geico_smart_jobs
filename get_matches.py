@@ -31,7 +31,7 @@ def get_matches(path):
                 match_count+=1
         match_dict[job.job_title] = match_count
     five = nlargest(5, match_dict, key=match_dict.get)
-    print(five)
+    return five
 if __name__ == "__main__":
     get_matches('software-engineer-midlevel')
 
