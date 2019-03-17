@@ -7,7 +7,6 @@ from smart_jobs.forms import ResumeForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-
 class Home(View):
 
     def get(self, request):
@@ -22,17 +21,22 @@ class Home(View):
 class Register(View):
 
     def get(self, request):
-        form = RegisterForm()
+        form = UserCreationForm()
         return render(request, 'register.html', {'form': form})
 
     def post(self, request):
-        form = RegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
         else:
             render(request, "hello")
-        return redirect('register')
+        return redirect('home')
+
+class Profile(View):
+
+    def get(self, request):
+        return render(request, 'profile.html')
 
 
 class RegisterForm(UserCreationForm):
@@ -42,7 +46,6 @@ class RegisterForm(UserCreationForm):
     last_name = forms.CharField(label = "Last name")
 
     class Meta:
-        model = AppUser
         fields = ("username", "first_name", "last_name", "email", )
 
 
