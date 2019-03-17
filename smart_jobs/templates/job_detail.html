@@ -18,8 +18,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             <form method="POST">
                 {% csrf_token %}
             <div class="w3-container w3-white">
-                <p>  Job Keywords: {{  object.job_description }} </p>
-                <p> Minimum Education Requirement: {{ object.min_education }} </p>
+                <p>  <b>Job Keywords:</b> {{  object.job_description }} </p>
+                <p> <b>Location:</b> {{ job.location }} </p>
+                <p> <b>Minimum Education Requirement:</b> {{ object.min_education }} </p>
                 <button class="btn btn-outline-info" type="submit">Apply</button>
             </div>
             </form>

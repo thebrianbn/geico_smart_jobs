@@ -27,6 +27,7 @@ class JobApplications(models.Model):
     job_description = models.TextField()
     job_description_words = models.TextField()
     min_education = models.CharField(max_length=50, null=True)
+    location = models.CharField(max_length=50, null=True)
     word_cloud = models.ImageField(upload_to="documents/wordcloud/")
 
     def __str__(self):
@@ -42,6 +43,7 @@ class UserApplications(models.Model):
     job = models.ForeignKey(JobApplications, on_delete=models.DO_NOTHING)
     resume_name = models.ForeignKey(Resumes, on_delete=models.DO_NOTHING)
     status = models.CharField(max_length=25, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
 

@@ -42,14 +42,8 @@
 
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'resume-upload' %}">RESUME UPLOAD</a></li>
-                                <li><a href="{% url 'profile' %}">PROFILE</a></li>
-                                <li><a href="{% url 'logout' %}">LOG OUT</a></li>
-                            {% else %}
-                                <li><a href="{% url 'login' %}">LOG IN</a></li>
-                                <li><a href="{% url 'register' %}">REGISTER</a></li>
-                            {% endif %}
-                            <li><a href="{% url 'user_dashboard' %}">DASHBOARD</a></li>
-                            <li class="profile-dropdwn-button">
+                                <li><a href="{% url 'dashboard' %}">DASHBOARD</a></li>
+                                <li class="profile-dropdwn-button">
                                 <div class="avatar-container">
                                     <a href="{% url 'home' %}">
                                         <img src="{% static 'app/images/avatar.png' %}" class="avatar"/>
@@ -58,15 +52,20 @@
                                 </div>
                                 <ul class="profile-dropdwn-content navbar-links navbar-right" style="right:0;">
                                     <li>
-                                        <a href="{% url 'home' %}">Profile</a>
+                                        <a href="{% url 'profile' %}">Profile</a>
                                         <a href="{% url 'home' %}">My Applications</a>
-                                        <a href="{% url 'home' %}">Log out</a>
+                                        <a href="{% url 'logout' %}">Log out</a>
                                     </li>
                                 </ul>
                             </li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">LOG IN</a></li>
+                                <li><a href="{% url 'register' %}">REGISTER</a></li>
+                            {% endif %}
+
+
 
                         </ul>
-                        -->
                     </div>
                 </div>
         </div>

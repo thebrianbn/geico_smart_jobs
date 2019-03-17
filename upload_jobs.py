@@ -12,12 +12,13 @@ from smart_jobs.models import JobApplications
 
 def load_jobs():
 
-    with open("articles.json", "r") as f:
+    with open("articles2.json", "r") as f:
         articles = ast.literal_eval(f.read())
         counter = 0
         for article in articles:
             min_education = article["min_education"]
             job_title = article["job_title"][:-16]
+            location = article["location"]
 
             stop_words = stopwords.words("english")
             filtered_description = []
@@ -37,7 +38,7 @@ def load_jobs():
                     filtered_description.append(word)
 
             new_job_app = JobApplications(min_education=min_education, job_title=job_title,
-                                          job_description=filtered_description)
+                                          job_description=filtered_description, location=location)
 
             new_job_app.save()
 
