@@ -25,7 +25,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-<<<<<<< HEAD
             name='Recommendations',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -34,8 +33,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-=======
->>>>>>> origin/master
             name='Resumes',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -61,7 +58,6 @@ class Migration(migrations.Migration):
                 'unique_together': {('username', 'job')},
             },
         ),
-<<<<<<< HEAD
         migrations.AlterUniqueTogether(
             name='userapplications',
             unique_together={('username', 'job_title')},
@@ -73,7 +69,6 @@ class Migration(migrations.Migration):
         migrations.AlterUniqueTogether(
             name='recommendations',
             unique_together={('username', 'job_title')},
-=======
         migrations.CreateModel(
             name='Recommendations',
             fields=[
@@ -84,6 +79,5 @@ class Migration(migrations.Migration):
             options={
                 'unique_together': {('username', 'job')},
             },
->>>>>>> origin/master
         ),
     ]
