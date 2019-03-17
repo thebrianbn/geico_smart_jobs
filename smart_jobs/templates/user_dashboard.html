@@ -2,9 +2,54 @@
 {% load static %}
 
 {% block content %}
+    <script type="text/javascript">
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
+    <script type="text/javascript">
+        function changeValue(step) {
+            document.getElementById("application-slider").disabled = true
+            var value = document.getElementById('application-slider').value;
+
+            var title = '';
+            var description = '';
+
+            if (value == 1) {
+                title = 'Application Received';
+                description = 'Your application has been received and is now under consideration.';
+            }
+            else if (value == 2) {
+                title = 'Phone Interview';
+                description = 'A recruiter will soon reach out to you to schedule an initial phone-screening interview.';
+            }
+            else if (value == 3) {
+                title = 'Virtual Interview';
+                description = 'A recruiter will reach out to you for a virtual video-call interview.';
+            }
+            else if (value == 4) {
+                title = 'On-site Interview';
+                description = 'A recruiter will reach out to you for an on-site interview at one of our offices.';
+            }
+            else if (value == 5) {
+                title = 'Job Offer';
+                description = 'Congratulations! We think that you are a qualified candidate and we would like to extend you an offer.';
+            }
+
+            document.getElementById('application-status-title').innerHTML = title;
+            document.getElementById('application-status-desc').innerHTML = description;
+
+        }
+
+    </script>
     <div class="myapplication-list">
         <h3 class="myapplication-header"><strong>My Applications</strong></h3>
-
+        
         {% for app in apps %}
                 <div class="application-item">
                     <button>
@@ -23,32 +68,38 @@
             <h4 class="application-header-location">Illadelph Fire, PA</h4>
             <h4 class="application-header-date"><strong>Application submitted: 3/17/19</strong></h4>
 
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <!--
+                Set value of value based on what the status is
+                1 = Application Received
+                2 = Phone Interview
+                3 = Virtual Interview
+                4 = On-Site Interview
+                5 = Offer
+                
+                set width to be .2*value
+            -->
+            <div class="slidecontainer">
+                <input type="range" min="1" max="5" value="2" class="slider" id="application-slider" list="steplist" onchange="changeValue(this.value)" onload="changeValue(this.value)" >
+                <datalist id="steplist">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </datalist>
             </div>
 
-            <div class="progress-button-container">
-                <div class="progress-button">
-                    <button id="button1"><img src="{% static 'app/images/progress_button.png' %}" /></button>
-                    <p>Application submitted</p>
-                </div>
-                <div class="progress-button">
-                    <button id="button2"><img src="{% static 'app/images/progress_button.png' %}" /></button>
-                    <p>Resume review</p>
-                </div>
-                <div class="progress-button">
-                    <button id="button3"><img src="{% static 'app/images/progress_button.png' %}" /></button>
-                    <p>Pre-screen</p>
-                </div>
-                <div class="progress-button">
-                    <button id="button4"><img src="{% static 'app/images/progress_button.png' %}" /></button>
-                    <p>Interview</p>
-                </div>
-                <div class="progress-button" id="last-button">
-                    <button id="button5"><img src="{% static 'app/images/progress_button.png' %}" /></button>
-                    <p>Offer received</p>
-                </div>
+            <div class="application-status-info">
+                <h3 class="application-header" id="application-status-title" style="font-weight: 600;"></h3>
+                <p id="application-status-desc">We've received your application and we are currently working on the next steps.</p>
             </div>
-        </div>
+
+
+            <script type="text/javascript">
+                window.onload = function () {
+                    changeValue(document.getElementById('application-slider').value);
+                }
+            </script>
+          </div>
     </div>
 {% endblock %}
