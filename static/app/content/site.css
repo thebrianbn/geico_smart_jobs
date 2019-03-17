@@ -1,117 +1,5 @@
-.navbar {
-    border: none;
-}
-
-.logo-banner {
-    background-color: white;
-}
-
-.logo-container {
-    padding: 20px;
-    text-align: center;
-}
-
-#geico-logo {
-    width:15%;
-    height:15%;
-}
-
-.navbar-header {
-    background-image: linear-gradient(#1f65f1, #2a53db);
-    width: 100%;
-}
-
-.navbar-user-links {
-    float: right;
-    padding-right:40px;
-}
-
-.navbar-links {
-    padding: 0px;
-}
-.navbar-links > li {
-    list-style-type: none;
-
-}
-
-.navbar-links > li > a {
-    min-width: 73px;
-    position: relative;
-    display: block;
-    padding: 18px 15px;
-    color: white;
+h1, h2, h3, h4, h5, p {
     font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    transition-duration: .2s;
-}
-
-.navbar-links > li > a:hover {
-    opacity: 0.5;
-    text-decoration: none;
-    transition-duration: .5s; 
-}
-
-/* Dropdown content (hidden by default) */
-.careers-dropdwn-content, .profile-dropdwn-content {
-    height: 0px;
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    text-align: left;
-}
-
-/* Links inside the dropdown */
-.careers-dropdwn-content .navbar.navbar-links li > a {
-    float: none;
-    padding: 14px 20px;
-}
-
-.careers-dropdwn-button:hover > .careers-dropdwn-content {
-    height: auto;
-    display: block;
-    text-decoration: none;
-    background-color: black;
-}
-
-.vert-line {
-    border-left: 2px solid;
-    border-color: black;
-}
-
-.avatar-container {
-    padding: 8px;
-    position: ;
-    display: block;
-    height: 100%;
-    width: inherit;
-    margin: auto;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50px;
-    transition-duration: .2s;
-}
-
-.avatar:hover {
-    -webkit-filter: brightness(70%);
-    transition-duration: .5s;
-}
-
-.profile-dropdwn-content {
-    margin-right: 40px;
-}
-
-.profile-dropdwn-button:hover > .profile-dropdwn-content {
-    height: auto;
-    display: block;
-    text-decoration: none;
-    background-color: black;
-    text-align: right;
 }
 
 body {
@@ -123,6 +11,7 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,

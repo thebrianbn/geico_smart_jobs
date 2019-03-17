@@ -8,6 +8,9 @@
         <title>{{ title }} - My Django Application</title>
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/navbar.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'app/content/job-application.css' %}" />
+
         <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
@@ -38,7 +41,7 @@
                     </div>
                     <div class="navbar-user-links">
                         <ul class="navbar-nav navbar-links">
-                            <li><a href="{% url 'home' %}">DASHBOARD</a></li>
+                            <li><a href="{% url 'user_dashboard' %}">DASHBOARD</a></li>
                             <li class="profile-dropdwn-button">
                                 <div class="avatar-container">
                                     <a href="{% url 'home' %}">
@@ -67,7 +70,10 @@
                 </div>
         </div>
 
-        {% block content %}{% endblock %}
+        <div class="body-content container">
+            {% block content %}
+            {% endblock %}
+        </div>
 
     </body>
 </html>
