@@ -1,4 +1,4 @@
-﻿{% load staticfiles %}
+﻿{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -21,12 +21,12 @@
                 <div class="navbar-header">
                     <div class="navbar-page-links">
                         <ul class="navbar-nav navbar-links">
-                            <li><a href="{% url 'home' %}">HOME</a></li>
-                            <li class="careers-dropdwn-button"><a href="{% url 'home' %}">CAREERS</a>
+                            <li><a href="{% url 'register' %}">HOME</a></li>
+                            <li class="careers-dropdwn-button"><a href="{% url 'register' %}">CAREERS</a>
                                 <ul class="careers-dropdwn-content navbar-links">
                                     <li>
-                                        <a href="{% url 'home' %}">Find Jobs</a>
-                                        <a href="{% url 'home' %}">Recommend Me a Job</a>
+                                        <a href="{% url 'register' %}">Find Jobs</a>
+                                        <a href="{% url 'register' %}">Recommend Me a Job</a>
                                     </li>
                                 </ul>
                             </li>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="navbar-user-links">
                         <ul class="navbar-nav navbar-links">
-                            <li><a href="{% url 'home' %}">LOG IN</a></li>
+                            <li><a href="{% url 'register' %}">LOG IN</a></li>
                         </ul>
                     </div>
                 </div>
