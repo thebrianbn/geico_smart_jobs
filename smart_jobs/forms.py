@@ -8,7 +8,7 @@ class ResumeForm(forms.ModelForm):
         model = Resumes
         fields = ("resume_name", "resume_file", )
 
-<<<<<<< HEAD
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -27,8 +27,7 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['image']
-=======
+
 
 class BlankForm(forms.Form):
     pass
->>>>>>> origin/master
