@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView
 
-from smart_jobs.models import Resumes, JobApplications, AppUser
+from smart_jobs.models import Resumes, JobApplications, User
 from smart_jobs.forms import ResumeForm
 
 from django.contrib.auth.forms import UserCreationForm
@@ -29,6 +29,7 @@ class Register(View):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+<<<<<<< HEAD
         else:
             render(request, "hello")
         return redirect('home')
@@ -49,12 +50,17 @@ class RegisterForm(UserCreationForm):
         fields = ("username", "first_name", "last_name", "email", )
 
 
+=======
+        return redirect('register')
+
+
+>>>>>>> master
 class ResumeUpload(View):
 
     def get(self, request):
 
         form = ResumeForm()
-        return render(request, "#", {"form": form})
+        return render(request, "resume_upload.html", {"form": form})
 
     def post(self, request):
 
@@ -63,11 +69,15 @@ class ResumeUpload(View):
             form.save()
 
             # Update associated user to resume
-            new_resume = Resumes.objects.get(form.id)
+            new_resume = Resumes.objects.latest("id")
             new_resume.username = request.user
+            return render(int(request.user))
+            new_resume.save()
             return redirect('home')
+        else:
+            render(request, "hello")
 
-        return render(request, "#", )
+        return render(request, "resume_upload.html")
 
 
 class JobBrowser(ListView):
