@@ -30,7 +30,7 @@ class Register(View):
 
     def get(self, request):
         form = UserCreationForm()
-        return render(request, 'register.html', {'form': form})
+        return render(request, 'register.html', {'form': form, 'title': 'registration'})
 
     def post(self, request):
         form = UserCreationForm(request.POST)
@@ -57,7 +57,8 @@ class Profile(View):
 
         context = {
             'u_form': u_form,
-            'p_form': p_form
+            'p_form': p_form,
+            'title': 'Profile'
         }
         return render(request, 'profile.html', context)
 
@@ -81,7 +82,7 @@ class ResumeUpload(View):
     def get(self, request):
 
         form = ResumeForm()
-        return render(request, "resume_upload.html", {"form": form})
+        return render(request, "resume_upload.html", {"form": form, 'title': 'Resume Upload'})
 
     def post(self, request):
 
@@ -107,7 +108,7 @@ class ResumeUpload(View):
         else:
             render(request, "hello")
 
-        return render(request, "resume_upload.html")
+        return render(request, "resume_upload.html", {'title': 'Resume Upload'})
 
 
 class JobBrowser(ListView):
@@ -124,7 +125,7 @@ class JobBrowser(ListView):
         return render(request, "browser.html", {"job_apps": new_apps, "title": "GEICO Jobs"})
 
     def post(self, request):
-        return render(request, "browser.html")
+        return redirect("job-browser")
 
 
 class JobApplicationDetail(DetailView):
@@ -173,6 +174,7 @@ class Dashboard(View):
         context = {}
         apps = UserApplications.objects.filter(username=request.user)
         context["apps"] = apps
+        context["title"] = "User Dashboard"
         return render(request, "user_dashboard.html", context=context)
 
     def post(self, request):
