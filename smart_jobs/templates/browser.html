@@ -2,13 +2,23 @@
     <head>
         <title> GEICO Jobs </title>
     </head>
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+    <h1> GEICO Jobs</h1>
     <body>
         {% for job in job_apps %}
+            <div class="w3-third w3-container w3-margin-bottom">
+            <div class="w3-container w3-white">
             <h5> {{  job.job_title }} </h5>
-            <p>  {{  job.job_description }} </p>
-            <p> {{ job.min_education }} </p>
+            <p>  Job Keywords: {{  job.job_description }} </p>
+            <p> Minimum Education Requirement: {{ job.min_education }} </p>
+            </div>
+            </div>
         {% endfor %}
     </body>
 </html>
-

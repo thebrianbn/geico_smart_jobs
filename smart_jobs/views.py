@@ -9,9 +9,11 @@ from django import forms
 
 
 class Register(View):
+
     def get(self, request):
         form = RegisterForm()
         return render(request, 'register.html', {'form': form})
+
     def post(self, request):
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -21,7 +23,9 @@ class Register(View):
             render(request, "hello")
         return redirect('register')
 
+
 class RegisterForm(UserCreationForm):
+
     email = forms.EmailField(label = "Email")
     first_name = forms.CharField(label = "First name")
     last_name = forms.CharField(label = "Last name")
@@ -29,6 +33,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = AppUser
         fields = ("username", "first_name", "last_name", "email", )
+
 
 class ResumeUpload(View):
 
