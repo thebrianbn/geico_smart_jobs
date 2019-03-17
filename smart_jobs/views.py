@@ -139,7 +139,7 @@ class JobApplicationDetail(DetailView):
         else:
             messages.error(request, "You have already applied to this job.")
 
-        return redirect("home")
+        return redirect("job-browser")
 
 
 class RecommendationsView(View):
