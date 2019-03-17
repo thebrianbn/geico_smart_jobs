@@ -50,8 +50,6 @@ class ResumeUpload(View):
             return redirect('home')
 
         return render(request, "#", )
-<<<<<<< HEAD
-=======
 
 
 class JobBrowser(ListView):
@@ -64,4 +62,3 @@ class JobBrowser(ListView):
     def post(self, request):
 
         pass
->>>>>>> origin
