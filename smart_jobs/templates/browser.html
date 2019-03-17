@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> GEICO Jobs </title>
+    </head>
+
+    <body>
+        {% for job in job_apps %}
+            <h5> {{  job.job_title }} </h5>
+            <p>  {{  job.job_description }} </p>
+            <p> {{ job.min_education }} </p>
+        {% endfor %}
+    </body>
+</html>
+
