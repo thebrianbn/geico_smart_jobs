@@ -19,6 +19,9 @@ from smart_jobs import views as user_views
 from geico_smart_jobs import settings
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +31,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('', include("smart_jobs.urls")),
 ]
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

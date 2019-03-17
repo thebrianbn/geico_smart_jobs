@@ -6,7 +6,7 @@ from django.urls import reverse
 User.add_to_class("position_preference", models.CharField(max_length=50, null=True))
 User.add_to_class("location_preference", models.CharField(max_length=50, null=True))
 User.add_to_class("education", models.CharField(max_length=50, null=True))
-User.add_to_class("image", models.ImageField(null=True))
+User.add_to_class("image", models.ImageField(null=True, upload_to="documents/images/"))
 
 
 class Resumes(models.Model):

@@ -7,7 +7,9 @@ from smart_jobs.models import Resumes, JobApplications, User, Recommendations, U
 from smart_jobs.forms import ResumeForm, BlankForm
 
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django import forms
+from django.utils.decorators import method_decorator
 from geico_smart_jobs.utils import get_matches
 
 
@@ -30,17 +32,32 @@ class Register(View):
 
     def post(self, request):
         form = UserCreationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid:
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, "Registration successful.")
-        return redirect('home')
+        return redirect('login')
 
 
 class Profile(View):
 
+    def post(self, request):
+        if request.method == 'POST':
+            u_form = UserUpdateForm(request.POST, instance=request.user)
+            p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+            if u_form.is_valid() and p_form.is_valid():
+                u_form.save()
+                p_form.save()
+                return redirect('profile')
+
     def get(self, request):
-        return render(request, 'profile.html')
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user)
+
+        context = {
+            'u_form': u_form,
+            'p_form': p_form
+        }
+        return render(request, 'profile.html', context)
 
 
 class RegisterForm(UserCreationForm):
@@ -52,7 +69,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         fields = ("username", "first_name", "last_name", "email", )
 
-    
+        
 class ResumeUpload(View):
 
     def get(self, request):
