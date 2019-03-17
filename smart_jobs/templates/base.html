@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     </head>
-    
+
     <body>
         <div class="navbar">
             <div class="logo-banner">
@@ -31,12 +31,18 @@
                                     </li>
                                 </ul>
                             </li>
-                            
+
                         </ul>
                     </div>
                     <div class="navbar-user-links">
                         <ul class="navbar-nav navbar-links">
-                            <li><a href="{% url 'register' %}">LOG IN</a></li>
+                            {% if user.is_authenticated %}
+                                <li><a href="{% url 'profile' %}">PROFILE</a></li>
+                                <li><a href="{% url 'logout' %}">LOG OUT</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">LOG IN</a></li>
+                                <li><a href="{% url 'register' %}">REGISTER</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
