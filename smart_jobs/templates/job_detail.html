@@ -12,17 +12,18 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
-    <h1> GEICO Jobs</h1>
+    <h1> {{ object.job_title }}</h1>
     <body>
-        {% for job in job_apps %}
-            <div class="w3-third w3-container w3-margin-bottom">
-                <div class="w3-container w3-white">
-                    <h5><a class="article-title" href="{% url 'job-detail' job.pk %}"> {{  job.job_title }} </a></h5>
-                    <p>  Job Keywords: {{  job.job_description }} </p>
-                    <p> Minimum Education Requirement: {{ job.min_education }} </p>
-                </div>
+        <div class="w3-third w3-container w3-margin-bottom">
+            <form method="POST">
+                {% csrf_token %}
+            <div class="w3-container w3-white">
+                <p>  Job Keywords: {{  object.job_description }} </p>
+                <p> Minimum Education Requirement: {{ object.min_education }} </p>
+                <button class="btn btn-outline-info" type="submit">Apply</button>
             </div>
-        {% endfor %}
+            </form>
+        </div>
     </body>
 </html>
 

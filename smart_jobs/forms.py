@@ -6,3 +6,7 @@ class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resumes
         fields = ("resume_name", "resume_file", )
+
+
+class BlankForm(forms.Form):
+    pass

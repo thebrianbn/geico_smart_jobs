@@ -3,6 +3,7 @@ from smart_jobs.models import JobApplications
 from parse_docx import parse_docx
 
 
+
 def get_matches(path):
 
     doc = path
@@ -23,9 +24,13 @@ def get_matches(path):
 
         title = job.job_title
         for word in title.split(" "):
+            word = word.strip('()')
+            word = word.lower()
             if word in new_tokens:
-                match_count += 3
-        match_dict[job.job_title] = match_count
+                match_count += 5
+        match_dict[job.id] = match_count
 
     five = nlargest(5, match_dict, key=match_dict.get)
     return five
+
+
