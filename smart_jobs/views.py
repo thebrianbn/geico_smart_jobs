@@ -29,9 +29,6 @@ class Register(View):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-<<<<<<< HEAD
-        else:
-            render(request, "hello")
         return redirect('home')
 
 class Profile(View):
@@ -49,12 +46,9 @@ class RegisterForm(UserCreationForm):
     class Meta:
         fields = ("username", "first_name", "last_name", "email", )
 
-
-=======
         return redirect('register')
 
-
->>>>>>> master
+    
 class ResumeUpload(View):
 
     def get(self, request):
