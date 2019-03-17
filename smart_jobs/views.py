@@ -7,7 +7,6 @@ from smart_jobs.forms import ResumeForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-
 class Home(View):
 
     def get(self, request):
@@ -30,9 +29,24 @@ class Register(View):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-        return redirect('register')
+        return redirect('home')
+
+class Profile(View):
+
+    def get(self, request):
+        return render(request, 'profile.html')
 
 
+class RegisterForm(UserCreationForm):
+
+    email = forms.EmailField(label = "Email")
+    first_name = forms.CharField(label = "First name")
+    last_name = forms.CharField(label = "Last name")
+
+    class Meta:
+        fields = ("username", "first_name", "last_name", "email", )
+
+    
 class ResumeUpload(View):
 
     def get(self, request):
@@ -49,7 +63,6 @@ class ResumeUpload(View):
             # Update associated user to resume
             new_resume = Resumes.objects.latest("id")
             new_resume.username = request.user
-            return render(int(request.user))
             new_resume.save()
             return redirect('home')
         else:
@@ -67,3 +80,7 @@ class JobBrowser(ListView):
 
     def post(self, request):
         return render(request, "browser.html")
+
+
+class JobApplication(View):
+    
