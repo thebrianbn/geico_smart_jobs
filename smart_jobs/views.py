@@ -5,7 +5,9 @@ from smart_jobs.models import Resumes, JobApplications, User
 from smart_jobs.forms import ResumeForm
 
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserRegisterForm, ProfileUpdateForm, UserUpdateForm
 from django import forms
+from django.utils.decorators import method_decorator
 
 class Home(View):
 
@@ -26,15 +28,31 @@ class Register(View):
 
     def post(self, request):
         form = UserCreationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid:
             form.save()
             username = form.cleaned_data.get('username')
-        return redirect('home')
+        return redirect('login')
 
 class Profile(View):
 
     def get(self, request):
-        return render(request, 'profile.html')
+        if request.method == 'POST':
+            u_form = UserUpdateForm(request.POST, instance=request.user)
+            p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+            if u_form.is_valid() and p_form.is_valid():
+                u_form.save()
+                p_form.save()
+                return redirect('profile')
+
+        else:
+            u_form = UserUpdateForm(instance=request.user)
+            p_form = ProfileUpdateForm(instance=request.user)
+
+        context = {
+            'u_form': u_form,
+            'p_form': p_form
+        }
+        return render(request, 'profile.html', context)
 
 
 class RegisterForm(UserCreationForm):
@@ -46,9 +64,6 @@ class RegisterForm(UserCreationForm):
     class Meta:
         fields = ("username", "first_name", "last_name", "email", )
 
-        return redirect('register')
-
-    
 class ResumeUpload(View):
 
     def get(self, request):
